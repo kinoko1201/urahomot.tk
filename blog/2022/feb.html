@@ -1,1 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <!-- タイトル -->
+  <title>Blog</title>
+  <!-- スタイルシート（css） -->
+  <link rel="stylesheet" type="text/css" href="https://urahomot.tk/blog/top.css">
+  <!-- jQuery -->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- header -->
+  <header>
+  	<h1 class="headline">
+      <a id="title"><font face="ＭＳ ゴシック"><a>URAHOMOT</a></font></font>
+</a>
+    </h1>
+    <ul class="nav-list">
+      <li class="nav-list-item">
+         <a href="home.html">Home</a>
+      </li>
+      <li class="nav-list-item"> <a href="blog.html">Blog</a></li>
+      <li class="nav-list-item"> <a href="topic.html">Topic</a></li>
+    </ul>
+  </header>
+  <div class="pagetop">
+  <a class="pagetop-btn" href="#"></a>
+　</div>
+  <script type="text/javascript">
+  $(function () {
+    var $pageTop = $(".pagetop-btn")
+    $pageTop.hide();
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 100) {
+            $pageTop.fadeIn();
+        } else {
+            $pageTop.fadeOut();
+        }
+    })          
+    });
 
+$('a[href^="#"]').click(function () {
+        var href = $(this).attr("href");
+        var target = $(href == "#" || href == "" ? 'html' : href);
+        var position = target.offset().top;
+        $("html, body").animate({
+            scrollTop: position
+        }, 700, "swing");
+        return false;
+    });
+
+$(window).scroll(function () {
+  scrollHeight = $(document).height();  
+        scrollPosition = $(window).height() + $(window).scrollTop();  
+        footHeight = $("footer").innerHeight(); 
+        if ( scrollHeight - scrollPosition  <= footHeight ) { 
+            $(".pagetop-btn").css({
+                "bottom": footHeight + 20
+            });
+        } else { 
+            $(".pagetop-btn").css({
+                "position":"fixed",
+                "bottom": "30px"
+            });
+        }
+});
+    </script>
+    <div class="logo">
+       <img src="https://urahomot.tk/image/blog/urahomot_blog_logo.png" >
+    </div>
+  
+  <footer>
+　　<ul class="footer-menu">
+     <li>home ｜</li>
+     <li>about ｜</li>
+     <li>service ｜</li>
+     <li>Contact Us</li>
+    </ul>
+    <p>© 2022 URAHOMOT</font></p>
+  </footer>
+</body>
+</html>
